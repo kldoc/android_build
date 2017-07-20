@@ -172,7 +172,7 @@ if OPTIONS.worker_threads == 0:
   OPTIONS.worker_threads = 1
 OPTIONS.two_step = False
 OPTIONS.no_signing = False
-OPTIONS.block_based = False
+OPTIONS.block_based = True
 OPTIONS.updater_binary = None
 OPTIONS.oem_source = None
 OPTIONS.oem_no_mount = False
@@ -629,7 +629,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
       info_dict=OPTIONS.info_dict)
 
   has_recovery_patch = HasRecoveryPatch(input_zip)
-  block_based = OPTIONS.block_based and has_recovery_patch
+  block_based = OPTIONS.block_based
 
   metadata["ota-type"] = "BLOCK" if block_based else "FILE"
 
